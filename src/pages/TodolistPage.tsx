@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="d-flex">
-      <Sidebar username="chanadda" type="admin" />
+      <Sidebar username="napatsadon" type="admin" />
       <div className="flex-grow-1">
         <Header />
         <div className="p-4">
@@ -23,11 +23,7 @@ function App() {
           <TaskInput />
           <TaskCard task={sampleTask} />
         </div>
-        <Footer
-          year={2026}
-          fullName="chanadda thanyaratthanon"
-          studentId="6706200999"
-        />
+        <Footer year={2026} fullName="napatsadon jampa" studentId="680610687" />
       </div>
     </div>
   );
