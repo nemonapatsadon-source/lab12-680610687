@@ -14,11 +14,11 @@ function App() {
   };
 
   return (
-    <div className="d-flex">
+    <div className="d-flex" style={{ minHeight: "100vh" }}>
       <Sidebar username="napatsadon" type="admin" />
-      <div className="flex-grow-1">
+      <div className="flex-grow-1 d-flex flex-column">
         <Header />
-        <div className="p-4">
+        <div className="p-4 flex-grow-1">
           <h2>Todo List</h2>
           <TaskInput />
           <TaskCard task={sampleTask} />
