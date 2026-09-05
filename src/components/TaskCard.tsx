@@ -1,42 +1,19 @@
-interface TaskCardProps {
-  title: string;
-  description: string;
-  done: boolean;
-  onDelete: () => void;
-  onDone: () => void;
+interface TaskProps {
+  task: {
+    id: number;
+    title: string;
+    description: string;
+    isDone: boolean;
+  };
 }
 
-export default function TaskCard({
-  title,
-  description,
-  done,
-  onDelete,
-  onDone,
-}: TaskCardProps) {
-  return (
-    <div className="card mb-2 p-3 d-flex flex-row justify-content-between align-items-center">
-      <div style={{ flex: 1 }}>
-        <h5 style={{ textDecoration: done ? "line-through" : "none" }}>
-          {title}
-        </h5>
-        <p
-          className="text-muted mb-0"
-          style={{ textDecoration: done ? "line-through" : "none" }}
-        >
-          {description}
-        </p>
-      </div>
-      <div className="d-flex gap-2">
-        <button
-          className={`btn ${done ? "btn-secondary" : "btn-success"}`}
-          onClick={onDone}
-        >
-          {done ? "Undo" : "Done"}
-        </button>
-        <button className="btn btn-danger" onClick={onDelete}>
-          Delete
-        </button>
-      </div>
+export const TaskCard = ({ task }: TaskProps) => (
+  <div className="card mb-2 p-3">
+    <h5>{task.title}</h5>
+    <p>{task.description}</p>
+    <div>
+      <button className="btn btn-success me-2">Done</button>
+      <button className="btn btn-danger">Delete</button>
     </div>
-  );
-}
+  </div>
+);
