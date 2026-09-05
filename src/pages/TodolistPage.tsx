@@ -1,17 +1,19 @@
 import { useState } from "react";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
-import TaskInput from "../components/TaskInput";
 import TaskCard from "../components/TaskCard";
-import Footer from "../components/Footer";
+import TaskInput from "../components/TaskInput";
+
+interface Task {
+  id: number;
+  title: string;
+  description: string;
+  done: boolean;
+}
 
 export default function TodolistPage() {
-  const [tasks, setTasks] = useState<
-    { id: number; title: string; description: string }[]
-  >([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   const addTask = (title: string, description: string) => {
-    const newTask = { id: Date.now(), title, description };
+    const newTask = { id: Date.now(), title, description, done: false };
     setTasks([...tasks, newTask]);
   };
 
@@ -19,29 +21,31 @@ export default function TodolistPage() {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
+  const toggleDone = (id: number) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, done: !task.done } : task,
+      ),
+    );
+  };
+
   return (
-    <div className="d-flex flex-column min-vh-100">
-      <Header />
-      <div className="d-flex flex-grow-1">
-        <Sidebar username="นัสสดล จำปา" type="Student" />
-        <main
-          className="p-4 flex-grow-1"
-          style={{ maxWidth: "720px", margin: "0 auto" }}
-        >
-          <TaskInput onAdd={addTask} />
-          <div className="mt-3">
-            {tasks.map((task) => (
-              <TaskCard
-                key={task.id}
-                title={task.title}
-                description={task.description}
-                onDelete={() => deleteTask(task.id)}
-              />
-            ))}
-          </div>
-        </main>
+    <div className="container mt-4">
+      <h2>My To-Do List</h2>
+      <TaskInput onAdd={addTask} />
+
+      <div className="mt-3">
+        {tasks.map((task) => (
+          <TaskCard
+            key={task.id}
+            title={task.title}
+            description={task.description}
+            done={task.done}
+            onDelete={() => deleteTask(task.id)}
+            onDone={() => toggleDone(task.id)}
+          />
+        ))}
       </div>
-      <Footer year="2026" fullName="นัสสดล จำปา" studentId="680610687" />
     </div>
   );
 }
