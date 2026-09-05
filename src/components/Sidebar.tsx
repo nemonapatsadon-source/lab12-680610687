@@ -1,13 +1,15 @@
-/*
- * อย่าลืมเปลี่ยน userName และ type ให้เป็นของตัวเอง
- */
-export default function Sidebar() {
+import type { SidebarProps } from "../libs/Todolist";
+
+export default function Sidebar({ username, type }: SidebarProps) {
   return (
-    <aside
-      className="d-flex flex-column p-4 bg-primary min-vh-100"
-      data-bs-theme="dark"
-    >
-      <p className="text-white">TODO: Sidebar</p>
-    </aside>
+    <div className="p-3 bg-light border-end" style={{ minWidth: "220px" }}>
+      <h5>User Profile</h5>
+      <p className="mb-1">
+        <strong>Username:</strong> {username}
+      </p>
+      <p>
+        <strong>Role:</strong> {type}
+      </p>
+    </div>
   );
 }

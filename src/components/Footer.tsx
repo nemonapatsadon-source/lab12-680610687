@@ -1,10 +1,11 @@
-/*
- * อย่าลืมเปลี่ยน fullName และ studentId ให้เป็นของตัวเอง
- */
-export default function Footer() {
+import type { FooterProps } from "../libs/Todolist";
+
+export default function Footer({ year, fullName, studentId }: FooterProps) {
   return (
-    <footer className="text-center w-100">
-      <p className="text-white bg-secondary p-4 m-0">Copyright © TODO</p>
+    <footer className="p-3 bg-light text-center border-top mt-auto">
+      <p className="mb-0 text-muted">
+        Copyright © {year} {fullName} {studentId}
+      </p>
     </footer>
   );
 }

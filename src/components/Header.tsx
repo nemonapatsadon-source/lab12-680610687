@@ -1,7 +1,7 @@
 export default function Header() {
   return (
-    <header className="text-white bg-secondary p-2 w-100">
-      <p className="m-4">TODO: Header</p>
+    <header className="p-3 bg-dark text-white text-center">
+      <h2>Todo List App</h2>
     </header>
   );
 }
