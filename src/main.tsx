@@ -7,14 +7,17 @@ import TodolistPage from "./pages/TodolistPage";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <div className="d-flex">
-      {" "}
-      <Sidebar username="napatsadon" type="admin" />
-      <div className="flex-grow-1">
-        <Header />
-        <TodolistPage />
-        <Footer year="2026" fullName="นภัสดล จำปา" studentId="680610687" />
+    <div className="d-flex flex-column min-vh-100">
+      <Header />
+
+      <div className="d-flex flex-grow-1">
+        <Sidebar username="napatsadon" type="admin" />
+        <div className="flex-grow-1">
+          <TodolistPage />
+        </div>
       </div>
+
+      <Footer year="2026" fullName="นภัสดล จ่าปา" studentId="680610687" />
     </div>
   </React.StrictMode>,
 );
