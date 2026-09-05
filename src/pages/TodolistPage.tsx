@@ -33,7 +33,8 @@ export default function TodolistPage() {
             {tasks.map((task) => (
               <TaskCard
                 key={task.id}
-                {...task}
+                title={task.title}
+                description={task.description}
                 onDelete={() => deleteTask(task.id)}
               />
             ))}

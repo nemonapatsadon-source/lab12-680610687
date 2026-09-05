@@ -9,15 +9,15 @@ export default function TaskInput({
   const [desc, setDesc] = useState("");
 
   return (
-    <div className="card p-3 mb-3">
+    <div className="input-group mb-3">
       <input
-        className="form-control mb-2"
-        placeholder="Title"
+        className="form-control"
+        placeholder="Insert a task here.."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <input
-        className="form-control mb-2"
+        className="form-control"
         placeholder="Description"
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
@@ -30,7 +30,7 @@ export default function TaskInput({
           setDesc("");
         }}
       >
-        Add Task
+        Add
       </button>
     </div>
   );
