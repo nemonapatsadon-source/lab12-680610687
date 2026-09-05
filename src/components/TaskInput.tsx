@@ -1,13 +1,36 @@
-export default function TaskInput() {
+import { useState } from "react";
+
+export default function TaskInput({
+  onAdd,
+}: {
+  onAdd: (t: string, d: string) => void;
+}) {
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+
   return (
-    <div className="input-group mb-3">
+    <div className="card p-3 mb-3">
       <input
-        type="text"
-        className="form-control"
-        placeholder="Insert a task here..."
+        className="form-control mb-2"
+        placeholder="Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
       />
-      <button className="btn btn-primary" type="button">
-        Add
+      <input
+        className="form-control mb-2"
+        placeholder="Description"
+        value={desc}
+        onChange={(e) => setDesc(e.target.value)}
+      />
+      <button
+        className="btn btn-primary"
+        onClick={() => {
+          onAdd(title, desc);
+          setTitle("");
+          setDesc("");
+        }}
+      >
+        Add Task
       </button>
     </div>
   );
